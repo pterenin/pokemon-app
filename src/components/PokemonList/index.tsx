@@ -1,6 +1,7 @@
 import PokemonCard from "@/components/PokemonCard"
+import { Pokemon } from "@/types/types"
 
-export default function PokemonList({ pockemonList }: { pockemonList: any[] }) {
+export default function PokemonList({ pockemonList }: { pockemonList: Pokemon[] }) {
     return (
         <div>
             <h1>Pokémon List</h1>
