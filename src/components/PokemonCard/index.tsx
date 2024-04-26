@@ -1,17 +1,14 @@
-
 import Link from "next/link"
-import { getPockemonDetails } from "@/api/api"
 import { Pokemon } from "@/types/types"
 
-export default async function PokemonCard({ pokemon }: { pokemon: Pokemon }) {
+export default function PokemonCard({ pokemon }: { pokemon: any }) {
     const name: string = pokemon.name;
-    const pokemonDetails: any = await getPockemonDetails(name);
-    const imagSrc = pokemonDetails?.sprites?.other?.home?.front_shiny;
-    const types: any[] = pokemonDetails?.types || [];
+    const imagSrc = pokemon?.sprites?.other?.home?.front_shiny;
+    const types: any[] = pokemon?.types || [];
     return <Link
         href={{
             pathname: name,
-            query: pokemonDetails
+            query: pokemon
         }}
         className="max-w-sm rounded overflow-hidden shadow hover:bg-gray-300 bg-white"
     >
