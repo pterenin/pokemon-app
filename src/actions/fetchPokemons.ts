@@ -1,7 +1,5 @@
 "use server";
-
-const POKEMON_API_URL = 'https://pokeapi.co/api/v2/pokemon'
-
+import { POKEMON_API_URL } from "@/constants/constants";
 
 // Fetches pokemon list, than fetches details for each using Promise.all
 export const fetchPokemons = async (url: string = POKEMON_API_URL) => {

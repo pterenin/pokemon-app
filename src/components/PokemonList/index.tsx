@@ -1,9 +1,11 @@
 "use client";
 import PokemonCard from "@/components/PokemonCard"
+import Link from "next/link"
+
 import Spiner from "@/components/Spiner"
 import { useState } from 'react'
 import { Pokemon } from "@/types/types"
-import { fetchPokemons } from "../../actions/fetchPokemons"
+import { fetchPokemons } from "@/actions/fetchPokemons"
 
 type PropTypes = {
     pockemonList: Pokemon[];
@@ -19,17 +21,25 @@ export default function PokemonList({ pockemonList, next }: PropTypes) {
     const loadMore = async () => {
         if (!nextUrl) return;
         setIsloading(true);
-        const data = await fetchPokemons(nextUrl);
-        setPokemons([...pokemons, ...data.results]);
-        setNextUrl(data.next);
+        try {
+            const data = await fetchPokemons(nextUrl);
+            setPokemons([...pokemons, ...data.results]);
+            setNextUrl(data.next);
+        } catch (error) {
+            alert(`Failed to Fetch: ${error}`);
+        }
         setIsloading(false);
     }
 
     return (
-        <div className="grid place-content-center p-10 bg-slate-100">
+        <div className="grid place-content-center p-10">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 max-w-screen-lg place-self-center">
                 {pokemons && pokemons.map((pokemon: any, index: any) => (
-                    <PokemonCard key={pokemon.name + "Card"} pokemon={pokemon} />
+                    <Link
+                        href={pokemon.name}
+                        className="hover:bg-gray-300 bg-white"
+                    >
+                        <PokemonCard key={pokemon.name + "Card"} pokemon={pokemon} /></Link>
                 ))}
             </div>
             <div className="flex mt-10">

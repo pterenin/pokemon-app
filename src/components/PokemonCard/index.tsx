@@ -1,17 +1,17 @@
-import Link from "next/link"
 import { Pokemon } from "@/types/types"
 
-export default function PokemonCard({ pokemon }: { pokemon: any }) {
+type PropTypes = {
+    pokemon: any;
+    styles?: string;
+}
+
+export default function PokemonCard({ pokemon, styles }: PropTypes) {
+    console.log('pokemon:::::::::', pokemon.name);
     const name: string = pokemon.name;
     const imagSrc = pokemon?.sprites?.other?.home?.front_shiny;
     const types: any[] = pokemon?.types || [];
-    return <Link
-        href={{
-            pathname: name,
-            query: pokemon
-        }}
-        className="max-w-sm rounded overflow-hidden shadow hover:bg-gray-300 bg-white"
-    >
+    const classNames = `max-w-sm rounded overflow-hidden shadow ${styles}`;
+    return <div className={classNames}>
         <img
             className="w-full"
             src={imagSrc}
@@ -26,5 +26,5 @@ export default function PokemonCard({ pokemon }: { pokemon: any }) {
                 return <span className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2" key={type.type.name + 'key'}>{type.type.name}</span>
             })}
         </div>
-    </Link>
+    </div>
 }
