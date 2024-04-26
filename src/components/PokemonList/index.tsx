@@ -5,7 +5,7 @@ import Link from "next/link"
 import Spiner from "@/components/Spiner"
 import { useState } from 'react'
 import { Pokemon } from "@/types/types"
-import { fetchPokemons } from "@/actions/fetchPokemons"
+import { fetchPokemonList } from "@/actions/fetchPokemonList"
 
 type PropTypes = {
     pockemonList: Pokemon[];
@@ -22,7 +22,7 @@ export default function PokemonList({ pockemonList, next }: PropTypes) {
         if (!nextUrl) return;
         setIsloading(true);
         try {
-            const data = await fetchPokemons(nextUrl);
+            const data = await fetchPokemonList(nextUrl);
             setPokemons([...pokemons, ...data.results]);
             setNextUrl(data.next);
         } catch (error) {

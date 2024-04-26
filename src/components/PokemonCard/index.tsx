@@ -1,15 +1,14 @@
-import { Pokemon } from "@/types/types"
+import { PokemonDetails } from "@/types/types"
 
 type PropTypes = {
-    pokemon: any;
+    pokemon: PokemonDetails;
     styles?: string;
 }
 
 export default function PokemonCard({ pokemon, styles }: PropTypes) {
-    console.log('pokemon:::::::::', pokemon.name);
     const name: string = pokemon.name;
-    const imagSrc = pokemon?.sprites?.other?.home?.front_shiny;
-    const types: any[] = pokemon?.types || [];
+    const imagSrc = pokemon.sprites.other.home.front_shiny;
+    const types: any[] = pokemon.types || [];
     const classNames = `max-w-sm rounded overflow-hidden shadow ${styles}`;
     return <div className={classNames}>
         <img
