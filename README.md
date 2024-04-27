@@ -31,7 +31,9 @@ Clicking Login link leads to Auth form. Login with email.
 Now user can see his email and is able to Logout
 <img width="1125" alt="Screenshot 2024-04-26 at 5 10 40 PM" src="https://github.com/pterenin/pokemon-app/assets/17990616/294fca2b-4830-491f-947b-5bd868f1466e">
 
-Note: Auth does not preven user from visiting the page the protection is not implemented for simplicyty
+Note: Auth does not preven user from visiting the page the protection is not implemented for simplicyty.
 
+The only page protected by Auth is **http://localhost:3000/secret**. To be able to see the secret page user should be logged in.
 
+<img width="1122" alt="Screenshot 2024-04-26 at 5 49 01 PM" src="https://github.com/pterenin/pokemon-app/assets/17990616/ec7b8c25-a41f-41f8-9296-3c4064a550ff">
 
